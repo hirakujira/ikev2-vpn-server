@@ -1,0 +1,16 @@
+version: '3.6'
+services:
+  vpn-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '~/strongswan.conf:/etc/strongswan.conf'
+    ports:
+      - 500:500/udp
+      - 4500:4500/udp
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - HOST=YOUR_HOST
+      - HOSTNAME=YOUR_HOSTNAME
